@@ -1,0 +1,26 @@
+% SPDX-FileCopyrightText: 2026 Benjamin C. Warner
+% SPDX-License-Identifier: MIT
+
+%% A stand-in for siunitx used only by the test suite.
+%%
+%% It records every call in the .log so the tests can assert exactly which siunitx
+%% command factpin.sty chose, with which options, values and unit. This lets the expl3
+%% logic be exercised on any TeX installation, including ones without siunitx.
+%%
+%% Arguments are \detokenize-d: unit macros such as \milli\second are real siunitx
+%% commands that this stub does not define, and writing them out unexpanded would
+%% trip "Undefined control sequence" inside \typeout.
+\ProvidesPackage{siunitx}[2026/08/12 test stub]
+
+\NewDocumentCommand\num{om}
+  {\typeout{FACTPIN|num|\detokenize{#1}|\detokenize{#2}|}}
+\NewDocumentCommand\qty{omm}
+  {\typeout{FACTPIN|qty|\detokenize{#1}|\detokenize{#2}|\detokenize{#3}|}}
+\NewDocumentCommand\numrange{omm}
+  {\typeout{FACTPIN|numrange|\detokenize{#1}|\detokenize{#2}|\detokenize{#3}|}}
+\NewDocumentCommand\qtyrange{ommm}
+  {\typeout{FACTPIN|qtyrange|\detokenize{#1}|\detokenize{#2}|\detokenize{#3}|\detokenize{#4}|}}
+\NewDocumentCommand\numlist{om}
+  {\typeout{FACTPIN|numlist|\detokenize{#1}|\detokenize{#2}|}}
+\NewDocumentCommand\qtylist{omm}
+  {\typeout{FACTPIN|qtylist|\detokenize{#1}|\detokenize{#2}|\detokenize{#3}|}}
