@@ -331,6 +331,8 @@ def test_real_siunitx_compiles_and_rounds(tmp_path):
 @needs_siunitx
 def test_real_siunitx_example_project_compiles(tmp_path):
     examples = Path(__file__).resolve().parents[1] / "examples"
+    if not (examples / "manuscript.tex").is_file():
+        pytest.skip("examples/ not present (it is not tracked or shipped in the sdist)")
     for name in ("manuscript.tex", "analysis.py"):
         shutil.copyfile(examples / name, tmp_path / name)
     factpin.install_sty(tmp_path)

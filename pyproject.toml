@@ -14,6 +14,10 @@ authors = [{ name = "Benjamin C. Warner" }]
 keywords = ["latex", "siunitx", "reproducibility", "manuscript", "constants"]
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/bcwarner/factpin"
+Issues = "https://github.com/bcwarner/factpin/issues"
+
 [project.optional-dependencies]
 dev = ["pytest>=7"]
 
@@ -27,7 +31,7 @@ packages = ["src/factpin"]
 "src/factpin/tex/factpin.sty" = "factpin/tex/factpin.sty"
 
 [tool.hatch.build.targets.sdist]
-include = ["src/factpin", "tests", "examples", "README.md", "LICENSE", "docs"]
+include = ["src/factpin", "tests", "README.md", "LICENSE"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
